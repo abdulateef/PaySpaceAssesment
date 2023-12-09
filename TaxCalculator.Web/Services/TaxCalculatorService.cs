@@ -29,9 +29,9 @@ namespace TaxCalculator.Web.Services
                         postCode = postCode,
                         income = income
                     };
-
+                    string url = $"{EnvironmentVariables.apiEndpoint}calculate";
                     // Send a POST request to the API
-                    var response = await client.PostAsJsonAsync(EnvironmentVariables.apiEndpoint, parameters);
+                    var response = await client.PostAsJsonAsync(url, parameters);
 
                     // Ensure the request was successful
                     response.EnsureSuccessStatusCode();
