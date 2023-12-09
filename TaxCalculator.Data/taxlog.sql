@@ -54,3 +54,26 @@ GO
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+GO
+
+CREATE TABLE [CalculatedTaxes] (
+    [Id] bigint NOT NULL IDENTITY,
+    [Tax] decimal(18,2) NOT NULL,
+    [PostCode] nvarchar(max) NOT NULL,
+    [Income] decimal(18,2) NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [UpdatedAt] datetime2 NOT NULL,
+    [CreatedBy] nvarchar(max) NULL,
+    [UpdatedBy] nvarchar(max) NULL,
+    CONSTRAINT [PK_CalculatedTaxes] PRIMARY KEY ([Id])
+);
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20231209140007_taxlog', N'7.0.0');
+GO
+
+COMMIT;
+GO
+

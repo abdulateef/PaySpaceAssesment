@@ -2,6 +2,7 @@
 using System.Reflection.Emit;
 using TaxCalculator.Core.Interface;
 using TaxCalculator.Core.Interface.Manager;
+using TaxCalculator.Core.Interface.Repositories;
 using TaxCalculator.Core.Model;
 
 namespace TaxCalculator.Infrastructure.Services
@@ -11,12 +12,15 @@ namespace TaxCalculator.Infrastructure.Services
         private readonly ITaxRateManager _taxRateManager;
         private readonly ITaxPostCodeManager _taxPostCodeManager;
         private readonly ITaxTypeManager _taxTypeManager;
-
-        public TaxCalculatorService(ITaxRateManager taxRateManager, ITaxPostCodeManager taxPostCodeManager, ITaxTypeManager taxTypeManager )
+        private readonly ICalculatedTaxeRepository _calculatedTaxeRepository;
+        public TaxCalculatorService(ITaxRateManager taxRateManager, ITaxPostCodeManager taxPostCodeManager,
+            ICalculatedTaxeRepository calculatedTaxeRepository,
+            ITaxTypeManager taxTypeManager )
         {
             _taxRateManager = taxRateManager;
             _taxPostCodeManager = taxPostCodeManager;
             _taxTypeManager = taxTypeManager;
+            _calculatedTaxeRepository = calculatedTaxeRepository;
         }
         public async Task<decimal> CalculateTax(decimal income, string postCode)
         {
@@ -57,7 +61,13 @@ namespace TaxCalculator.Infrastructure.Services
                     default:
                         break;
                 }
-
+                //log tax
+              await  _calculatedTaxeRepository.Create(new CalculatedTaxeModel
+                {
+                    Income = income,
+                    PostCode = postCode,
+                    Tax = tax
+                });
                 return tax;
             }
             catch (Exception ex)

@@ -22,7 +22,7 @@ namespace TaxCalculator.Data.Repositories
                 {
                     return new Tuple<bool, TaxPostCodeModel>(false, new TaxPostCodeModel());
                 }               
-                await _dbContext.AddAsync(taxPostCodeModel.Map());
+                await _dbContext.TaxPostCodes.AddAsync(taxPostCodeModel.Map());
                var result = await _dbContext.SaveChangesAsync();
                 if (result > 0)
                 {

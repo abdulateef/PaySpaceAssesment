@@ -17,6 +17,8 @@ namespace TaxCalculator.Data
 		public DbSet<TaxPostCode> TaxPostCodes { get; set; }
         public DbSet<TaxRate> TaxRates { get; set; }
         public DbSet<TaxType> TaxTypes { get; set; }
+        public DbSet<CalculatedTaxe> CalculatedTaxes { get; set; }
+
     }
 }
 
