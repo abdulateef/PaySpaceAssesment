@@ -90,6 +90,43 @@ namespace TaxCalculator.Data.Mapping
 
         }
 
+        
+
+        public static CalculatedTaxeModel Map(this CalculatedTaxe calculatedTaxe)
+        {
+            if (calculatedTaxe == null)
+            {
+                return new CalculatedTaxeModel();
+            }
+
+            return new CalculatedTaxeModel
+            {
+                Income = calculatedTaxe.Income,
+                PostCode = calculatedTaxe.PostCode,
+                Tax = calculatedTaxe.Tax
+            };
+
+
+        }
+        public static CalculatedTaxe Map(this CalculatedTaxeModel calculatedTaxe)
+        {
+            if (calculatedTaxe == null)
+            {
+                return new CalculatedTaxe();
+            }
+
+            return new CalculatedTaxe
+            {
+                Income = calculatedTaxe.Income,
+                PostCode = calculatedTaxe.PostCode,
+                Tax = calculatedTaxe.Tax,
+                CreatedAt = DateTime.Now,
+                CreatedBy = "System",
+                
+            };
+
+
+        }
         public static TaxTypeModel Map(this TaxType taxType)
         {
             if (taxType == null)
