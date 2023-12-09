@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Model\" />
+    <None Remove="Enum\" />
+    <None Remove="Interface\" />
+    <None Remove="Interface\Services\" />
+    <None Remove="Interface\Repositories\" />
+    <None Remove="Interface\Manager\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Enum\" />
+    <Folder Include="Interface\" />
+    <Folder Include="Interface\Services\" />
+    <Folder Include="Interface\Repositories\" />
+    <Folder Include="Interface\Manager\" />
+  </ItemGroup>
+</Project>

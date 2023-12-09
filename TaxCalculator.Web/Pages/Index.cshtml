@@ -1,0 +1,32 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h2 class="display-4">Welcome to PaySpace Tax Calculator</h2>
+    <br />
+    <form method="post">
+        <label for="input1">Enter PostCode:</label>
+        <input type="text" id="input1" name="Input1" />
+
+        <br />
+
+        <label for="input2">Enter Income:</label>
+        <input type="text" id="input2" name="Input2" />
+
+        <br />
+
+        <button type="submit">Submit</button>
+    </form>
+    <br />
+    <div>
+        @if (!string.IsNullOrEmpty(Model.Message))
+        {
+            <p>Your tax is: @Model.Message</p>
+        }
+    </div>
+</div>
+
+
