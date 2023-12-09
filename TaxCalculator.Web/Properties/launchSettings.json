@@ -14,7 +14,7 @@
       "applicationUrl": "http://localhost:5218",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "apiEndpoint": ""
+        "apiEndpoint": "https://localhost:7123/api/tax/"
       },
       "dotnetRunMessages": true
     },
@@ -24,7 +24,7 @@
       "applicationUrl": "https://localhost:7006;http://localhost:5218",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "apiEndpoint": ""
+        "apiEndpoint": "https://localhost:7123/api/tax/"
       },
       "dotnetRunMessages": true
     },
@@ -33,7 +33,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "apiEndpoint": ""
+        "apiEndpoint": "https://localhost:7123/api/tax/"
       }
     }
   }
