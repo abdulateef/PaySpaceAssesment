@@ -24,9 +24,6 @@ builder.Services.AddTransient<ITaxRateRepositories, TaxRateRepositories>();
 builder.Services.AddTransient<ITaxTypeRepositories, TaxTypeRepositories>();
 builder.Services.AddTransient<ITaxCalculatorService, TaxCalculatorService>();
 builder.Services.AddTransient<ICalculatedTaxeRepository, CalculatedTaxeRepository>();
-
-builder.Services.AddDbContext<Context>();
-
 builder.Services.AddDbContext<Context>(opt =>
 opt.UseSqlServer(EnvironmentVariables.ConnectionString));
 
