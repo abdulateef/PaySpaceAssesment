@@ -138,6 +138,7 @@ namespace TaxCalculator.Data.Mapping
             {
            
                 Type = taxType.Type,
+                Id = taxType.Id
             };
 
 

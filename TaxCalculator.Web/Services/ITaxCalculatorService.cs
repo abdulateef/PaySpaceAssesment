@@ -5,7 +5,7 @@ namespace TaxCalculator.Web.Services
 {
 	public interface ITaxCalculatorService
 	{
-		Task<RespponseModel<decimal>> Calculate(string postCode, decimal Income);
+		Task<RespponseModel> Calculate(string postCode, decimal Income);
 	}
 }
 

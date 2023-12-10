@@ -30,7 +30,7 @@ namespace TaxCalculator.Infrastructure.Manager
 
         public Task<Tuple<bool, TaxRateModel>> GetByIncome(decimal income)
         {
-            throw new NotImplementedException();
+            return _taxRateRepositories.GetByIncome(income);
         }
 
         public Task<Tuple<bool, TaxRateModel>> Update(TaxRateModel taxRateModel, int rateId)

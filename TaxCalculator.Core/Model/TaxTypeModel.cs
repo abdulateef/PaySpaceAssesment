@@ -6,6 +6,7 @@ namespace TaxCalculator.Core.Model
 	public class TaxTypeModel
     {
 		public string Type { get; set; }
+        public long Id { get; set; }
     }
 
     public class CreateTaxTypeModel

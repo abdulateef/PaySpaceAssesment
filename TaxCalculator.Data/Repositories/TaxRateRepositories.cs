@@ -1,5 +1,4 @@
 ﻿using System;
-using Azure;
 using Microsoft.EntityFrameworkCore;
 using TaxCalculator.Core.Interface.Repositories;
 using TaxCalculator.Core.Model;
@@ -56,6 +55,7 @@ namespace TaxCalculator.Data.Repositories
 
         public async Task<Tuple<bool, TaxRateModel[]>> GetAll()
         {
+
             var result = await _dbContext.TaxRates.Select(x => x.Map()).ToArrayAsync();
             return new Tuple<bool, TaxRateModel[]>(true, result);
         }
@@ -68,7 +68,7 @@ namespace TaxCalculator.Data.Repositories
                 {
                     return new Tuple<bool, TaxRateModel>(false, new TaxRateModel());
                 }
-                var taxRate = await _dbContext.TaxRates.FirstOrDefaultAsync(x => x.From >=  income && x.To  <= income);
+                var taxRate = await _dbContext.TaxRates.FirstOrDefaultAsync(x => x.From <=  income && x.To  >= income);
                 return new Tuple<bool, TaxRateModel>(true, taxRate.Map());
 
 

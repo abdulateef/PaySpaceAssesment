@@ -1,12 +1,12 @@
 ﻿using System;
 namespace TaxCalculator.Web.Model
 {
-    public class RespponseModel<T>
+    public class RespponseModel
     {
-        public string? Message { get; set; }
-        public T? ResponseData { get; set; }
-        public bool RequestStatus { get; set; }
-        public string? ResponseCode { get; set; }
+        public string? message { get; set; }
+        public decimal responseData { get; set; }
+        public bool requestStatus { get; set; }
+        public string? responseCode { get; set; }
     }
 }
 
