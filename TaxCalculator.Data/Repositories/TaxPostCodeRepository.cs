@@ -60,7 +60,8 @@ namespace TaxCalculator.Data.Repositories
 
         public async Task<Tuple<bool, TaxPostCodeModel[]>> GetAll(int page, int pageNumber)
         {
-          var result =  await _dbContext.TaxPostCodes.Select(x => x.Map()).Skip(page).Take(pageNumber).ToArrayAsync();
+            page = page > 0 ? (page - 1) * pageNumber : 0;
+            var result =  await _dbContext.TaxPostCodes.Select(x => x.Map()).Skip(page).Take(pageNumber).ToArrayAsync();
             return new Tuple<bool, TaxPostCodeModel[]>(true, result);
         }
 

@@ -105,23 +105,23 @@ namespace TaxCalculator.Api.Controllers
             var (success, result) = await _taxPostCodeManager.GetAll(page, pageNumber);
             if (success)
             {
-                var response = new RespponseModel<TaxPostCodeModel>
+                var response = new RespponseModel<TaxPostCodeModel[]>
                 {
                     Message = "Retrieved Successfully",
                     RequestStatus = success,
                     ResponseCode = "00",
-                    ResponseData = null
+                    ResponseData = result
                 };
 
                 return Ok(response);
             }
 
-            return BadRequest(new RespponseModel<TaxPostCodeModel>
+            return BadRequest(new RespponseModel<TaxPostCodeModel[]>
             {
                 Message = "Failed",
                 RequestStatus = success,
                 ResponseCode = "01",
-                ResponseData = null
+                ResponseData = result
             });
         }
 

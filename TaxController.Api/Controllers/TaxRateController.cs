@@ -104,23 +104,23 @@ namespace TaxCalculator.Api.Controllers
             var (success, result) = await _taxRateManager.GetAll();
             if (success)
             {
-                var response = new RespponseModel<TaxRateModel>
+                var response = new RespponseModel<TaxRateModel[]>
                 {
                     Message = "Retrieved Successfully",
                     RequestStatus = success,
                     ResponseCode = "00",
-                    ResponseData = null
+                    ResponseData = result
                 };
 
                 return Ok(response);
             }
 
-            return BadRequest(new RespponseModel<TaxRateModel>
+            return BadRequest(new RespponseModel<TaxRateModel[]>
             {
                 Message = "Failed",
                 RequestStatus = success,
                 ResponseCode = "01",
-                ResponseData = null
+                ResponseData = result
             });
         }
 
