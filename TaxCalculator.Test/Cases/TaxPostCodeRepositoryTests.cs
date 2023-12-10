@@ -27,8 +27,8 @@ namespace TaxCalculator.Test.Cases
             var result = await taxPostCodeRepository.Create(taxPostCodeModel);
 
             // Assert
-            Assert.Equals(true, result.Item1);
-            Assert.Equals("00000", result.Item2.PostalCode);
+            Assert.That(result.Item1, Is.EqualTo(true));
+            Assert.That(result.Item2.PostalCode, Is.EqualTo("00000"));
         }
 
         [Test]
@@ -51,8 +51,8 @@ namespace TaxCalculator.Test.Cases
             var result = await taxPostCodeRepository.Update(taxPostCodeModel, oldTaxPostCode);
 
             // Assert
-            Assert.Equals(true, result.Item1);
-            Assert.Equals("000001", result.Item2.PostalCode);
+            Assert.That(result.Item1, Is.EqualTo(true));
+            Assert.That(result.Item2.PostalCode, Is.EqualTo("000001"));
         }
 
         [Test]
@@ -70,7 +70,8 @@ namespace TaxCalculator.Test.Cases
             var result = await taxPostCodeRepository.Delete(taxPostCodeId);
 
             // Assert
-            Assert.Equals(true, result);
+            Assert.That(result, Is.EqualTo(true));
+
         }
 
         [Test]
@@ -89,8 +90,8 @@ namespace TaxCalculator.Test.Cases
             var result = await taxPostCodeRepository.GetPostCode(taxPostCode);
 
             // Assert
-            Assert.Equals(true, result);
-            Assert.Equals(000000, result.Item2.PostalCode);
+            Assert.That(result.Item1, Is.EqualTo(true));
+            Assert.That(result.Item2.PostalCode, Is.EqualTo("000000"));
 
         }
         [Test]
@@ -113,8 +114,7 @@ namespace TaxCalculator.Test.Cases
             var result = await taxPostCodeRepository.GetAll(1,20);
 
             // Assert
-            Assert.Equals(true, result.Item1);
-
+            Assert.That(result.Item1, Is.EqualTo(true));
         }
 
 

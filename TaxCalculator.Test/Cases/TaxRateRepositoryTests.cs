@@ -28,8 +28,8 @@ namespace TaxCalculator.Test.Cases
             var result = await taxRateRepository.Create(taxRate);
 
             // Assert
-            Assert.Equals(true, result.Item1);
-            Assert.Equals(1000, result.Item2.From);
+            Assert.That(result.Item1, Is.EqualTo(true));
+            Assert.That(result.Item2.From, Is.EqualTo(1000));
         }
 
         [Test]
@@ -53,8 +53,8 @@ namespace TaxCalculator.Test.Cases
             var result = await taxRateRepository.Update(taxRate, taxRateId);
 
             // Assert
-            Assert.Equals(true, result.Item1);
-            Assert.Equals(1000, result.Item2.From);
+            Assert.That(result.Item1, Is.EqualTo(true));
+            Assert.That(result.Item2.From, Is.EqualTo(1000));
         }
 
         [Test]
@@ -78,8 +78,8 @@ namespace TaxCalculator.Test.Cases
             var result = await taxRateRepository.GetByIncome(income);
 
             // Assert
-            Assert.Equals(true, result.Item1);
-            Assert.Equals(1000, result.Item2.From);
+            Assert.That(result.Item1, Is.EqualTo(true));
+            Assert.That(result.Item2.From, Is.EqualTo(1000));
         }
 
         [Test]
@@ -97,14 +97,13 @@ namespace TaxCalculator.Test.Cases
             var result = await taxRateRepository.Delete(id);
 
             // Assert
-            Assert.Equals(true, result);
+            Assert.That(result, Is.EqualTo(true));
         }
 
         [Test]
         public async Task GetAllTaxRate_ShouldReturnTrue()
         {
             // Arrange
-            int id = 1;
             var mockTaxRateRepository = new Mock<ITaxRateRepositories>();
             mockTaxRateRepository.Setup(repo => repo.GetAll())
                               .ReturnsAsync(new Tuple<bool, TaxRateModel[]>(true, new[]
@@ -129,8 +128,8 @@ namespace TaxCalculator.Test.Cases
             var result = await taxRateRepository.GetAll();
 
             // Assert
-            Assert.Equals(true, result);
-            Assert.Equals(1000, result.Item2[1].From);
+            Assert.That(result.Item1, Is.EqualTo(true));
+            Assert.That(result.Item2[0].From, Is.EqualTo(1000));
 
         }
     }

@@ -1,6 +1,8 @@
 ﻿using System;
 using Moq;
 using TaxCalculator.Core.Interface;
+using NUnit.Framework;
+
 
 namespace TaxCalculator.Test.Cases
 {
@@ -10,7 +12,7 @@ namespace TaxCalculator.Test.Cases
 
 
         [Test]
-        public void CalculateTax_ShouldReturnTax()
+        public async Task CalculateTax_ShouldReturnTax()
         {
             // Arrange
             decimal income = 100;
@@ -22,10 +24,11 @@ namespace TaxCalculator.Test.Cases
             var taxCalculator = mockTaxCalculatorService.Object;
 
             // Act
-            var tax = taxCalculator.CalculateTax(income, postCode);
+            var tax = await taxCalculator.CalculateTax(income, postCode);
 
             // Assert
-            Assert.Equals(299,tax);
+            Assert.That(tax, Is.EqualTo(299));
+
         }
     }
 }
