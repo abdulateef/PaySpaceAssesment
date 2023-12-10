@@ -13,7 +13,7 @@ namespace TaxCalculator.Test.Cases
         public async Task CreateTaxType_ShouldReturnCreatedTaxType()
         {
             // Arrange
-            string type = "Progressiv";
+            string type = "Progressive";
             var taxType = new TaxTypeModel { Type = type };
             var mockTaxTypeRepository = new Mock<ITaxTypeRepositories>();
             mockTaxTypeRepository.Setup(repo => repo.Create(type))
@@ -25,18 +25,18 @@ namespace TaxCalculator.Test.Cases
             var result = await taxTypeRepository.Create(type);
 
             // Assert
-            Assert.Equals(true, result.Item1);
-            Assert.Equals("Progressive", result.Item2.Type);
+            Assert.That(result.Item1, Is.EqualTo(true));
+            Assert.That(result.Item2.Type, Is.EqualTo("Progressive"));
         }
 
         [Test]
         public async Task UpdateTaxType_ShouldReturnUpdateTaxType()
         {
             // Arrange
-            string type = "Progressiv";
+            string type = "Progressive";
             var taxType = new TaxTypeModel { Type = type };
             var mockTaxTypeRepository = new Mock<ITaxTypeRepositories>();
-            mockTaxTypeRepository.Setup(repo => repo.Update(type, "Progressive"))
+            mockTaxTypeRepository.Setup(repo => repo.Update(type, "Progressive1"))
                               .ReturnsAsync(new Tuple<bool, TaxTypeModel>(true, taxType));
 
             var taxTypeRepository = mockTaxTypeRepository.Object;
@@ -45,8 +45,8 @@ namespace TaxCalculator.Test.Cases
             var result = await taxTypeRepository.Create(type);
 
             // Assert
-            Assert.Equals(true, result.Item1);
-            Assert.Equals("Progressive", result.Item2.Type);
+            Assert.That(result.Item1, Is.EqualTo(true));
+            Assert.That(result.Item2.Type, Is.EqualTo("Progressive1"));
         }
 
         [Test]
@@ -64,7 +64,7 @@ namespace TaxCalculator.Test.Cases
             var result = await taxTypeRepository.Delete(type);
 
             // Assert
-            Assert.Equals(true, result.Item1);
+            Assert.That(result.Item1, Is.EqualTo(true));
         }
 
         [Test]
@@ -84,8 +84,8 @@ namespace TaxCalculator.Test.Cases
             var result = await taxTypeRepository.GetById(typeId);
 
             // Assert
-            Assert.Equals(true, result.Item1);
-            Assert.Equals("Progressive", result.Item2.Type);
+            Assert.That(result.Item1, Is.EqualTo(true));
+            Assert.That(result.Item2.Type, Is.EqualTo("Progressive"));
         }
         [Test]
         public async Task GetAllTaxType_ShouldReturnAllTaxType()
@@ -106,8 +106,8 @@ namespace TaxCalculator.Test.Cases
             var result = await taxTypeRepository.GetAll(1,2);
 
             // Assert
-            Assert.Equals(true, result.Item1);
-            Assert.Equals("Progressive", result.Item2[0].Type);
+            Assert.That(result.Item1, Is.EqualTo(true));
+            Assert.That(result.Item2[0].Type, Is.EqualTo("Progressive"));
         }
     }
 }
