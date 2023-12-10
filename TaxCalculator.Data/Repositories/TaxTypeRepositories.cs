@@ -69,6 +69,7 @@ namespace TaxCalculator.Data.Repositories
 
         public async Task<Tuple<bool, TaxTypeModel[]>> GetAll(int page, int pageNumber)
         {
+            page = page > 0 ? (page - 1) * pageNumber : 0;          
             var result = await _dbContext.TaxTypes.Select(x => x.Map()).Skip(page).Take(pageNumber).ToArrayAsync();
             return new Tuple<bool, TaxTypeModel[]>(true, result);
         }

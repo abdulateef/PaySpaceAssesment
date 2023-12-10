@@ -46,7 +46,7 @@ namespace TaxCalculator.Infrastructure.Services
                 //get tax rate range
                 var taxRate = await _taxRateManager.GetByIncome(income);
               
-                switch (type.Item2.Type)
+                switch (type.Item2.Type.ToLower().Trim())
                 {
                     case  "progressive":
                         var taxRateModel = taxRate.Item1 ? taxRate.Item2 : new TaxRateModel();

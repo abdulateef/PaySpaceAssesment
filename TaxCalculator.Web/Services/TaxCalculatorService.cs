@@ -14,7 +14,7 @@ namespace TaxCalculator.Web.Services
             _httpClientFactory = httpClientFactory;
 		}
 
-        public async Task<RespponseModel<decimal>> Calculate(string postCode, decimal income)
+        public async Task<RespponseModel> Calculate(string postCode, decimal income)
         {
             try
             {
@@ -38,14 +38,14 @@ namespace TaxCalculator.Web.Services
 
                     // Read and return the response content as a string
                     var content =  await response.Content.ReadAsStringAsync();
-                    var respponseModel = JsonSerializer.Deserialize<RespponseModel<decimal>>(content);
+                    var respponseModel = JsonSerializer.Deserialize<RespponseModel>(content);
                     if (respponseModel != null)
                     {
                         return respponseModel;
                     }
                     else
                     {
-                        return new RespponseModel<decimal> { };
+                        return new RespponseModel{ };
 
                     }
                 }

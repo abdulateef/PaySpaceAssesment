@@ -23,22 +23,18 @@ public class IndexModel : PageModel
 
     public async Task<IActionResult> OnPost()
     {
-        // Handle the form submission (POST request)
-        // Access the form values using Request.Form["Input1"] and Request.Form["Input2"]
 
-        // Example: Log the values to the console
         var postCode = Request.Form["Input1"].ToString();
         decimal income = Convert.ToDecimal(Request.Form["Input2"]);
         var response = await _taxCalculator.Calculate(postCode, income);
-        if (response?.Message != null)
+        if (response?.message != null)
         {
             // Access properties of the result object as needed
-            var message = response.ResponseData;
+            var message = response.responseData;
 
             // Store the message in TempData to pass it to the view
             Message = message.ToString();
 
-            // Perform further processing with the deserialized data...
         }
         return RedirectToPage("/index");
     }
