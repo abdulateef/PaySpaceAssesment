@@ -10,7 +10,7 @@ namespace TaxCalculator.Test.Cases
 	{
 
         [Test]
-        public async Task CreateTaxType_ShouldReturnCreatedTaxType()
+        public async Task CreateTaxType_Should_Return_Created_TaxType()
         {
             // Arrange
             string type = "Progressive";

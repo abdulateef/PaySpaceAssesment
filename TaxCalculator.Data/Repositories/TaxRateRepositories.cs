@@ -8,11 +8,11 @@ using TaxCalculator.Data.Mapping;
 
 namespace TaxCalculator.Data.Repositories
 {
-	public class TaxRateRepositories : ITaxRateRepositories
+	public class TaxRateRepository : ITaxRateRepository
     {
         private readonly Context _dbContext;
 
-        public TaxRateRepositories(Context dbContext)
+        public TaxRateRepository(Context dbContext)
 		{
             _dbContext = dbContext;
         }
@@ -20,6 +20,10 @@ namespace TaxCalculator.Data.Repositories
         public async Task<Tuple<bool, TaxRateModel>> Create(TaxRateModel taxRateModel)
         {
             if (taxRateModel == null)
+            {
+                return new Tuple<bool, TaxRateModel>(false, new TaxRateModel());
+            }
+            if (taxRateModel.From <= 0 || taxRateModel.To <= 0 )
             {
                 return new Tuple<bool, TaxRateModel>(false, new TaxRateModel());
             }
@@ -88,7 +92,7 @@ namespace TaxCalculator.Data.Repositories
                 if (taxRate != null)
                 {
                     taxRate.RatePercentage = taxRateModel.RatePercentage;
-                    taxRate.From = taxRate.From;
+                    taxRate.From = taxRateModel.From;
                     taxRate.To = taxRateModel.To;
                     taxRate.UpdatedAt = DateTime.Now;
                     taxRate.UpdatedBy = "System";

@@ -20,7 +20,7 @@ builder.Services.AddTransient<ITaxPostCodeManager, TaxPostCodeManager>();
 builder.Services.AddTransient<ITaxRateManager, TaxRateManager>();
 builder.Services.AddTransient<ITaxTypeManager, TaxTypeManager>();
 builder.Services.AddTransient<ITaxPostCodeRepository, TaxPostCodeRepository>();
-builder.Services.AddTransient<ITaxRateRepositories, TaxRateRepositories>();
+builder.Services.AddTransient<ITaxRateRepository, TaxRateRepository>();
 builder.Services.AddTransient<ITaxTypeRepositories, TaxTypeRepositories>();
 builder.Services.AddTransient<ITaxCalculatorService, TaxCalculatorService>();
 builder.Services.AddTransient<ICalculatedTaxeRepository, CalculatedTaxeRepository>();
