@@ -48,7 +48,8 @@ namespace TaxCalculator.Data.Mapping
             {
                 From = taxRate.From,
                 To = taxRate.To,
-                RatePercentage = taxRate.RatePercentage
+                RatePercentage = taxRate.RatePercentage,
+                Id = (int)taxRate.Id
             };
 
 

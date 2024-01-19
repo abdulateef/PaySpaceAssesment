@@ -5,7 +5,7 @@
 }
 
 <div class="text-center">
-    <h2 class="display-4">Welcome to PaySpace Tax Calculator</h2>
+    <h2 class="display-4">Welcome to Tax Calculator</h2>
     <br />
     <form method="post">
         <label for="input1">Enter PostCode:</label>
@@ -18,13 +18,13 @@
 
         <br />
 
-        <button type="submit">Submit</button>
+        <button id="submit" type="submit">Submit</button>
     </form>
     <br />
-    <div>
+    <div id="response">
         @if (!string.IsNullOrEmpty(Model.Message))
         {
-            <p>Your tax is: @Model.Message</p>
+            <p id="response1">Your tax is: @Model.Message</p>
         }
         else
         {

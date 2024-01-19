@@ -3,7 +3,7 @@ using TaxCalculator.Core.Model;
 
 namespace TaxCalculator.Core.Interface.Repositories
 {
-	public interface ITaxRateRepositories
+	public interface ITaxRateRepository
     {
         Task<Tuple<bool, TaxRateModel>> Create(TaxRateModel taxRateModel);
         Task<Tuple<bool, TaxRateModel>> Update(TaxRateModel taxRateModel, int rateId);

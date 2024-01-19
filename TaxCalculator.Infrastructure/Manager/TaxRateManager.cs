@@ -7,8 +7,8 @@ namespace TaxCalculator.Infrastructure.Manager
 {
 	public class TaxRateManager : ITaxRateManager
     {
-        private readonly ITaxRateRepositories _taxRateRepositories;
-        public TaxRateManager(ITaxRateRepositories taxRateRepositories)
+        private readonly ITaxRateRepository _taxRateRepositories;
+        public TaxRateManager(ITaxRateRepository taxRateRepositories)
 		{
             _taxRateRepositories = taxRateRepositories;
         }

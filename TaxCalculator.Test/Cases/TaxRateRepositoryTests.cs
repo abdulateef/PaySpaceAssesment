@@ -18,7 +18,7 @@ namespace TaxCalculator.Test.Cases
                 To = 1000,
                 RatePercentage = 10
             };
-            var mockTaxRateRepository = new Mock<ITaxRateRepositories>();
+            var mockTaxRateRepository = new Mock<ITaxRateRepository>();
             mockTaxRateRepository.Setup(repo => repo.Create(taxRate))
                               .ReturnsAsync(new Tuple<bool, TaxRateModel>(true, taxRate));
 
@@ -43,7 +43,7 @@ namespace TaxCalculator.Test.Cases
                 To = 100000,
                 RatePercentage = 10
             };
-            var mockTaxRateRepository = new Mock<ITaxRateRepositories>();
+            var mockTaxRateRepository = new Mock<ITaxRateRepository>();
             mockTaxRateRepository.Setup(repo => repo.Update(taxRate, taxRateId))
                               .ReturnsAsync(new Tuple<bool, TaxRateModel>(true, taxRate));
 
@@ -68,7 +68,7 @@ namespace TaxCalculator.Test.Cases
                 To = 100000,
                 RatePercentage = 10
             };
-            var mockTaxRateRepository = new Mock<ITaxRateRepositories>();
+            var mockTaxRateRepository = new Mock<ITaxRateRepository>();
             mockTaxRateRepository.Setup(repo => repo.GetByIncome(income))
                               .ReturnsAsync(new Tuple<bool, TaxRateModel>(true, taxRate));
 
@@ -87,7 +87,7 @@ namespace TaxCalculator.Test.Cases
         {
             // Arrange
             int id = 1;
-            var mockTaxRateRepository = new Mock<ITaxRateRepositories>();
+            var mockTaxRateRepository = new Mock<ITaxRateRepository>();
             mockTaxRateRepository.Setup(repo => repo.Delete(id))
                               .ReturnsAsync(true);
 
@@ -104,7 +104,7 @@ namespace TaxCalculator.Test.Cases
         public async Task GetAllTaxRate_ShouldReturnTrue()
         {
             // Arrange
-            var mockTaxRateRepository = new Mock<ITaxRateRepositories>();
+            var mockTaxRateRepository = new Mock<ITaxRateRepository>();
             mockTaxRateRepository.Setup(repo => repo.GetAll())
                               .ReturnsAsync(new Tuple<bool, TaxRateModel[]>(true, new[]
                               {

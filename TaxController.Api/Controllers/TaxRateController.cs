@@ -21,7 +21,7 @@ namespace TaxCalculator.Api.Controllers
         }
 
         [HttpPost("CreateTaxRate")]
-        public async Task<IActionResult> Create([Required][FromBody] TaxRateModel taxRateModel)
+        public async Task<IActionResult> CreateTaxType( TaxRateModel taxRateModel)
         {
             var (success, result) = await _taxRateManager.Create(taxRateModel);
             if (success)
